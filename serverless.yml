@@ -1,0 +1,15 @@
+service: eph-api
+
+provider:
+  name: aws
+  runtime: python3.7
+  stage: dev
+  region: eu-west-2
+
+functions:
+  vec:
+    handler: handler.vec
+    events:
+      - http:
+        path: vec
+        method: GET
