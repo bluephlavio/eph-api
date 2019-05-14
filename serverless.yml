@@ -5,11 +5,12 @@ provider:
   runtime: python3.7
   stage: dev
   region: eu-west-2
+  profile: eph-dev
 
 functions:
-  vec:
-    handler: handler.vec
+  vectors:
+    handler: handler.vectors
     events:
       - http:
-        path: vec
-        method: GET
+          path: vectors
+          method: POST
