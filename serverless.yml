@@ -14,3 +14,10 @@ functions:
       - http:
           path: vectors
           method: POST
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: true

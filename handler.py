@@ -1,4 +1,5 @@
 import json
+from eph import vec
 
 
 def vectors(event, context):
@@ -7,9 +8,12 @@ def vectors(event, context):
     objs = params['objs']
     dates = params['dates']
 
+    data = vec(299)
+
     body = {
         "objs": objs,
-        "dates": dates
+        "dates": dates,
+        "data": data
     }
 
     response = {
