@@ -2,7 +2,7 @@ import json
 from eph import get
 
 
-def handler(event, context):
+def main(event, context):
     params = json.loads(event['body'])
     objs = params['objs']
     dates = params['dates']
