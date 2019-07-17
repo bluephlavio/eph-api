@@ -1,14 +1,13 @@
 import json
-from eph import vec
+from eph import get
 
 
-def vectors(event, context):
-
+def handler(event, context):
     params = json.loads(event['body'])
     objs = params['objs']
     dates = params['dates']
 
-    data = vec(399)
+    data = get(399, dates)
 
     body = {
         "objs": objs,

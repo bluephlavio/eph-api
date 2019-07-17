@@ -8,11 +8,11 @@ provider:
   profile: eph-dev
 
 functions:
-  vectors:
-    handler: handler.vectors
+  api:
+    handler: handler.handler
     events:
       - http:
-          path: vectors
+          path: /
           method: POST
 
 plugins:
