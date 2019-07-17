@@ -8,7 +8,7 @@ def vectors(event, context):
     objs = params['objs']
     dates = params['dates']
 
-    data = vec(299)
+    data = vec(399)
 
     body = {
         "objs": objs,
