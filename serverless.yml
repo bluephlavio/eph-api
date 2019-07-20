@@ -2,14 +2,19 @@ service: eph-api
 
 provider:
   name: aws
-  runtime: python3.7
+  runtime: python3.6
   stage: dev
   region: eu-west-2
   profile: eph-dev
 
+package:
+  exclude:
+    - env/**
+    - node_modules/**
+
 functions:
   api:
-    handler: handler.main
+    handler: api.handler
     events:
       - http:
           path: /
@@ -21,3 +26,5 @@ plugins:
 custom:
   pythonRequirements:
     dockerizePip: true
+    zip: true
+    slim: true
