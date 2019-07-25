@@ -2,7 +2,10 @@
   "name": "eph-api",
   "description": "",
   "version": "0.1.0",
-  "dependencies": {},
+  "dependencies": {
+    "serverless": "^1.48.2",
+    "serverless-offline": "^5.8.0"
+  },
   "devDependencies": {
     "serverless-python-requirements": "^4.3.0"
   }

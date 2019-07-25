@@ -1,18 +1,20 @@
 import json
-from eph import get
-
+import eph
+import pandas as pd
 
 def handler(event, context):
     params = json.loads(event['body'])
     objs = params['objs']
     dates = params['dates']
+    jplparams = params['jplparams']
 
-    data = get(399, dates)
+    data = eph.get(objs, dates=dates, **jplparams)
+    df = data.to_pandas()
 
     body = {
         "objs": objs,
         "dates": dates,
-        "data": data
+        "data": df.to_json(orient='records')
     }
 
     response = {
