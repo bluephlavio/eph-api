@@ -1,25 +1,23 @@
 import json
 import eph
 import pandas as pd
+from datetime import datetime
+
 
 def handler(event, context):
-    params = json.loads(event['body'])
-    objs = params['objs']
-    dates = params['dates']
-    jplparams = params['jplparams']
+    try:
+        params = json.loads(event['body'])
+        objs = params['objs']
+        dates = params.get('dates',
+                        datetime.now().strftime('%Y-%m-%d %H:%M'))
+        orient = params.get('orient', 'records')
+        jplparams = params.get('jplparams', {})
 
-    data = eph.get(objs, dates=dates, **jplparams)
-    df = data.to_pandas()
+        table = eph.get(objs, dates=dates, **jplparams)
 
-    body = {
-        "objs": objs,
-        "dates": dates,
-        "data": df.to_json(orient='records')
-    }
+        data = json.loads(table.to_pandas().to_json(orient=orient))
 
-    response = {
-        "statusCode": 200,
-        "body": json.dumps(body)
-    }
-
+        response = {"statusCode": 200, "body": json.dumps({"data": data})}
+    except:
+        response = {"statusCode": 500, "body": json.dumps({"error": "Internal Server Error"})}
     return response
