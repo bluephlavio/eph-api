@@ -2,14 +2,14 @@ service: eph-api
 
 provider:
   name: aws
-  runtime: python3.6
+  runtime: python3.7
   stage: dev
   region: eu-west-2
   profile: eph-dev
 
 package:
   exclude:
-    - env/**
+    - venv/**
     - node_modules/**
 
 functions:
@@ -19,13 +19,13 @@ functions:
       - http:
           path: /
           method: POST
+          cors: true
 
 plugins:
   - serverless-python-requirements
   - serverless-offline
-
 custom:
   pythonRequirements:
-    dockerizePip: true
+    dockerizePip: non-linux
     zip: true
     slim: true

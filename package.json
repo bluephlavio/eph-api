@@ -2,11 +2,13 @@
   "name": "eph-api",
   "description": "",
   "version": "0.1.0",
+  "license": "MIT",
+  "repository": "https://github.com/bluephlavio/eph-api",
   "dependencies": {
     "serverless": "^1.48.2"
   },
   "devDependencies": {
-    "serverless-python-requirements": "^4.3.0",
-    "serverless-offline": "^5.8.0"
+    "serverless-offline": "^5.8.0",
+    "serverless-python-requirements": "^4.3.0"
   }
 }

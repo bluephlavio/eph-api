@@ -1,7 +1,15 @@
+try:
+    import unzip_requirements
+except ImportError:
+    pass
+
 import json
 import eph
 import pandas as pd
 from datetime import datetime
+import logging
+
+logger = logging.getLogger()
 
 
 def handler(event, context):
@@ -18,6 +26,7 @@ def handler(event, context):
         data = json.loads(table.to_pandas().to_json(orient=orient))
 
         response = {"statusCode": 200, "body": json.dumps({"data": data})}
-    except:
-        response = {"statusCode": 500, "body": json.dumps({"error": "Internal Server Error"})}
+    except Exception as e:
+        logger.error(str(e))
+        response = {"statusCode": 500, "body": json.dumps({"error": str(e)})}
     return response
