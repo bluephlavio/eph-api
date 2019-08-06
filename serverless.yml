@@ -20,11 +20,13 @@ functions:
           path: /
           method: POST
           cors: true
-          timeout: 60
+    timeout: 30
+    memorySize: 1024
 
 plugins:
   - serverless-python-requirements
   - serverless-offline
+
 custom:
   pythonRequirements:
     dockerizePip: non-linux
