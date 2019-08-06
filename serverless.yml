@@ -20,6 +20,7 @@ functions:
           path: /
           method: POST
           cors: true
+          timeout: 60
 
 plugins:
   - serverless-python-requirements
